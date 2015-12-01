@@ -12,8 +12,8 @@
 </head>
 
 <body>
-<h1>Supplier Id is: {{ $supplier }}</h1>
-<h1>Category Id is: {{ $category }}</h1>
+<h1>Added Successfully</h1>
+
 
 </body>
 </html>

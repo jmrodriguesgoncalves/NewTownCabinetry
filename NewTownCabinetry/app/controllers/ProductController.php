@@ -11,4 +11,5 @@ class ProductController extends Controller {
 		//$try1 = DB::table('suppliers')->select('name', 'id AS supplier_id')->get();
 		return View::make('add_product', array('categories' => $categories, 'suppliers' => $suppliers));
 	}
+
 }

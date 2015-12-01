@@ -28,7 +28,7 @@
     {{ Form::text('name') }}
 <br>
     {{ Form::label('unitPrice', 'Cost') }}
-    {{ Form::number('unitPrice') }}
+    {{ Form::input('decimal', 'unitPrice') }}
 <br>
 	{{ Form::label('quantity', 'Quantity') }}
 	{{ Form::number('quantity') }}
@@ -36,6 +36,9 @@
 	{{ Form::label('color', 'Color') }}
 	{{ Form::text('color')}}
 <br>
+	{{ Form::label('description', 'Description') }}
+	{{ Form::textarea('description') }}
+	<br>
 	{{ Form::submit('Add') }}
 	{{ Form::close() }}
 </fieldset>

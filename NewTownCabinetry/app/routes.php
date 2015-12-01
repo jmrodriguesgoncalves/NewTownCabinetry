@@ -18,10 +18,22 @@ Route::get('/', function () {
 Route::get('add_product', 'ProductController@showData');
 
 Route::post('show_product', function () {
-		$supplier = new Suppliers;
-		$supplier = Input::get('suppliers_id');
-		$category = new Categories;
-		$category = Request::input('categories_id');
+		//$supplier = new Suppliers;
+		//$supplier = Input::get('suppliers_id');
+		//$category = new Categories;
+		//$category = Request::input('categories_id');
 
-		return View::make('show_product')->with('supplier', $supplier)->with('category', $category);
+		$product = new Products;
+		$product->name = Input::get('name');
+		$product->quantity = Input::get('quantity');
+		$product->unitPrice = Input::get('unitPrice');
+		$product->details = Input::get('description');
+		$product->color = Input::get('color');
+		$product->supplierProductId = Input::get('productId');
+		$product->supplierId = Input::get('suppliers_id');
+		$product->categoryId = Input::get('categories_id');
+		$product->save();
+
+		//return View::make('show_product')->with('supplier', $supplier)->with('category', $category);
+		return View::make('show_product')->with('product', $product);
 	});
