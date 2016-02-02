@@ -13,12 +13,13 @@ class CreateSuppliersTable extends Migration {
 		Schema::create('suppliers', function ($newSupplier) {
 				
 				$newSupplier->increments('id');
-				$newSupplier->string('supplierCode');
 				$newSupplier->string('name');
 				$newSupplier->string('phone');
 				$newSupplier->string('email');
 				$newSupplier->string('address');
+				$newSupplier->string('city');
 				$newSupplier->string('province');
+				$newSupplier->string('postalCode');
 				$newSupplier->string('country');
 
 				$newSupplier->timestamps();

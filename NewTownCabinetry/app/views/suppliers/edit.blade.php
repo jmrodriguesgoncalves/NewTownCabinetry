@@ -162,19 +162,7 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								<!-- dropdown-search -->
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-search">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search for...">
-											<span class="input-group-btn">
-												<button class="btn btn-theme" type="button">Search</button>
-											</span>
-										</div>
-									</div>
-								</li>
-								<!-- //dropdown-search -->
+							
 							</ul>
 						</div><!--/.nav-collapse -->
 
@@ -202,14 +190,6 @@
 								<div class="panel-body">
 									{{Form::model($supplier, array('route' => array('suppliers.update', $supplier->id),
  																   'method' => 'PUT'))}}
-
-	    								<div class="form-group"><!-- Supplier ID field start-->
-												{{ Form::label('supplierCode', 'ID', array('class' => 'col-xs-3 control-label')) }}
-	    										@if ($errors->has('supplierCode'))
-												<div class="has-error">
-												@endif
-												{{ Form::text('supplierCode', null, array('class' => 'form-control', 'id' => 'supplierCode')) }}
-											</div>
 
 											<div class="form-group"><!-- Supplier Name field start-->
 												{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}
@@ -243,6 +223,22 @@
 												{{ Form::text('address', null, array('class' => 'form-control', 'id' => 'address')) }}
 											</div>
 
+											<div class="form-group"><!-- Supplier City field start-->
+												{{ Form::label('city', 'City', array('class' => 'col-xs-3 control-label')) }}
+	    										@if ($errors->has('address'))
+												<div class="has-error">
+												@endif
+												{{ Form::text('city', null, array('class' => 'form-control', 'id' => 'city')) }}
+											</div>
+
+											<div class="form-group"><!-- Supplier Postal Code field start-->
+												{{ Form::label('postalCode', 'Postal Code', array('class' => 'col-xs-3 control-label')) }}
+	    										@if ($errors->has('postalCode'))
+												<div class="has-error">
+												@endif
+												{{ Form::text('postalCode', null, array('class' => 'form-control', 'id' => 'postalCode')) }}
+											</div>
+
 											<div class="form-group"><!-- Supplier Province field start-->
 												{{ Form::label('province', 'Province/State', array('class' => 'col-xs-3 control-label')) }}
 	    										@if ($errors->has('province'))
@@ -267,12 +263,6 @@
 
 									</div>
 
-									@if ($errors->has('supplierCode'))
-									<div class="alert alert-danger" role="alert">
-										SUPPLIER ID FIELD IS REQUIRED!
-									</div>
-									@endif
-
 									@if ($errors->has('name'))
 									<div class="alert alert-danger" role="alert">
 										NAME FIELD IS REQUIRED!
@@ -294,6 +284,18 @@
 									@if ($errors->has('address'))
 									<div class="alert alert-danger" role="alert">
 										ADDRESS FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('city'))
+									<div class="alert alert-danger" role="alert">
+										CITY FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('postalCode'))
+									<div class="alert alert-danger" role="alert">
+										POSTAL CODE FIELD IS REQUIRED!
 									</div>
 									@endif
 

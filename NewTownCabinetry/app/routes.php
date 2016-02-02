@@ -18,3 +18,5 @@ Route::post('view_product_details', 'ProductController@viewProductDetails');
 Route::resource('categories', 'CategoryController');
 
 Route::resource('suppliers', 'SupplierController');
+
+Route::resource('suppliers.details', 'SupplierController@details');

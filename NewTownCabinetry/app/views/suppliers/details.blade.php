@@ -1,6 +1,5 @@
 <!doctype html>
 
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -131,7 +130,7 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home</a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home </a>
 								</li>
 								<!--menu li end here-->
 								<li class="dropdown">
@@ -163,7 +162,7 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								
+							
 							</ul>
 						</div><!--/.nav-collapse -->
 
@@ -186,80 +185,26 @@
 						<div class="col-md-4 col-md-offset-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">Create Supplier</h3>
+									<h3 class="panel-title">Supplier Details</h3>
 								</div>
 								<div class="panel-body">
-									{{Form::open(array('url' => 'suppliers', 'supplierCode' => 'add'))}}
 
-										<div class="form-group"><!-- Supplier Name field start-->
-											{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('name'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name')) }}
-										</div>
-										
-										<div class="form-group"><!-- Supplier Phone field start-->
-											{{ Form::label('phone', 'Phone', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('phone'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('phone', '', array('class' => 'form-control', 'id' => 'phone')) }}
-										</div>
+									<p>Name: {{$supplier->name}}</p>
+									<p>Phone: {{$supplier->phone}}</p>
+									<p>Email: {{$supplier->email}}</p>
+									<p>Address: {{$supplier->address}}</p>
+									<p>City: {{$supplier->city}}</p>
+									<p>Province: {{$supplier->province}}</p>
+									<p>Postal Code: {{$supplier->postalCode}}</p>
+									<p>Country: {{$supplier->country}}</p>
 
-										<div class="form-group"><!-- Supplier Email field start-->
-											{{ Form::label('email', 'Email', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('email'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('email', '', array('class' => 'form-control', 'id' => 'email')) }}
-										</div>
-
-										<div class="form-group"><!-- Supplier Address field start-->
-											{{ Form::label('address', 'Address', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('address'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('address', '', array('class' => 'form-control', 'id' => 'address')) }}
-										</div>
-
-										<div class="form-group"><!-- Supplier City field start-->
-											{{ Form::label('city', 'City', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('address'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('city', '', array('class' => 'form-control', 'id' => 'city')) }}
-										</div>
-
-										<div class="form-group"><!-- Supplier Postal Code field start-->
-											{{ Form::label('postalCode', 'Postal Code', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('postalCode'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('postalCode', '', array('class' => 'form-control', 'id' => 'postalCode')) }}
-										</div>
-
-										<div class="form-group"><!-- Supplier Province field start-->
-											{{ Form::label('province', 'Province/State', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('province'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('province', '', array('class' => 'form-control', 'id' => 'province')) }}
-										</div>
-
-										<div class="form-group"><!-- Supplier Country field start-->
-											{{ Form::label('country', 'Country', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('country'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('country', '', array('class' => 'form-control', 'id' => 'country')) }}
-										</div>
-
-										<div class="padd-t-20">
-											{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this supplier?")')) }}
-											{{ Form::reset('Reset Form', array('class' => 'btn btn-red btn-lg btn-block'))}}
-										</div>
-									{{ Form::close() }}
+									<div class="padd-t-20">
+											<a class="btn btn-small btn-green" href="{{ URL::to('suppliers/' . $supplier->id . '/edit') }}">Edit</a>
+											{{ Form::open(array('url' => 'suppliers/' . $supplier->id, 'class' => 'pull-right')) }}
+            								{{ Form::hidden('_method', 'DELETE') }}
+            								{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure you want to delete this supplier?")')) }}
+        									{{ Form::close() }}
+									</div>		
 
 								</div>
 
@@ -287,12 +232,6 @@
 								</div>
 								@endif
 
-								@if ($errors->has('city'))
-								<div class="alert alert-danger" role="alert">
-									CITY FIELD IS REQUIRED!
-								</div>
-								@endif
-
 								@if ($errors->has('postalCode'))
 								<div class="alert alert-danger" role="alert">
 									POSTAL CODE FIELD IS REQUIRED!
@@ -310,70 +249,72 @@
 									COUNTRY FIELD IS REQUIRED!
 								</div>
 								@endif
+									
 							</div>
+
 						</div>
-					</div><!-- ./row -->
+					</div>
+				</div><!-- ./row -->
 
-				</div><!-- ./container -->
-			</section>
-		</div>
-		<!-- //wrapper -->
+			</div><!-- ./container -->
+		</section>
+	</div>
+	<!-- //wrapper -->
 
-		<!-- jquery -->
-		<script src="{{ URL::asset('js/jquery-1.11.3.min.js') }}"></script>
-		<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+	<!-- jquery -->
+	<script src="{{ URL::asset('js/jquery-1.11.3.min.js') }}"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
-		<!-- morris -->
-		<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js') }}"></script>
-		<script type="{{ URL::asset('text/javascript" src="plugins/morris/morris.min.js') }}"></script>
+	<!-- morris -->
+	<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js') }}"></script>
+	<script type="{{ URL::asset('text/javascript" src="plugins/morris/morris.min.js') }}"></script>
 
-		<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 
-		<!-- validator  -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/validator/validator.min.js') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/validator/form-scripts.js') }}"></script>
+	<!-- validator  -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/validator/validator.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/validator/form-scripts.js') }}"></script>
 
-		<!-- magnific-popup -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+	<!-- magnific-popup -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
-		<!-- owl-carousel -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
+	<!-- owl-carousel -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
 
-		<!-- wow -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/wow/wow.js') }}"></script>
+	<!-- wow -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/wow/wow.js') }}"></script>
 
-		<!-- appear -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/appear/jquery.appear.js') }}"></script>
+	<!-- appear -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/appear/jquery.appear.js') }}"></script>
 
-		<!-- waypoints -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+	<!-- waypoints -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
 
-		<!-- counter-up -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/counterup/jquery.counterup.min.js') }}"></script>
+	<!-- counter-up -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/counterup/jquery.counterup.min.js') }}"></script>
 
-		<!-- countdown -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/countdown/jquery.countdown.min.js') }}"></script>
+	<!-- countdown -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/countdown/jquery.countdown.min.js') }}"></script>
 
-		<!-- gmaps  -->
-		<script type="text/javascript" src="{{ URL::asset('https://maps.googleapis.com/maps/api/js?v=3.exp') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/gmaps/gmaps.js') }}"></script>
+	<!-- gmaps  -->
+	<script type="text/javascript" src="{{ URL::asset('https://maps.googleapis.com/maps/api/js?v=3.exp') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/gmaps/gmaps.js') }}"></script>
 
-		<!-- smooth-scroll -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/smooth-scroll/smooth-scroll.js') }}"></script>
+	<!-- smooth-scroll -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/smooth-scroll/smooth-scroll.js') }}"></script>
 
-		<!-- flexslider -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/flexslider/jquery.flexslider-min.js') }}"></script>
-
-
-		<!-- switcher -->
-		<script type="text/javascript" src="{{ URL::asset('switcher/switcher.js') }}"></script>
-
-		<!-- main -->
-		<script src="{{ URL::asset('js/main.js') }}"></script>
+	<!-- flexslider -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/flexslider/jquery.flexslider-min.js') }}"></script>
 
 
-	</body>
+	<!-- switcher -->
+	<script type="text/javascript" src="{{ URL::asset('switcher/switcher.js') }}"></script>
+
+	<!-- main -->
+	<script src="{{ URL::asset('js/main.js') }}"></script>
+
+
+</body>
 </html>
-

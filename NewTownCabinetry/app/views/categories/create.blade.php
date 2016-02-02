@@ -163,19 +163,7 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								<!-- dropdown-search -->
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-search">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search for...">
-											<span class="input-group-btn">
-												<button class="btn btn-theme" type="button">Search</button>
-											</span>
-										</div>
-									</div>
-								</li>
-								<!-- //dropdown-search -->
+								
 							</ul>
 						</div><!--/.nav-collapse -->
 

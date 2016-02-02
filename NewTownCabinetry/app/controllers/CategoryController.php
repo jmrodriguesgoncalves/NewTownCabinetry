@@ -2,13 +2,43 @@
 
 class CategoryController extends Controller {
 
-	public function index() {
+	protected $layout = 'layouts.master';
 
-		$categories = Categories::all();
-		return View::make('categories.index')
-			->with('categories', $categories);
+	public function showProfile() {
+		$this->layout->content = View::make('categories.profile');
 	}
 
+	public function index() {
+
+		if (Input::get('search') != null) {
+			$cat = new Categories;
+
+			return $this->search(Input::get('search'));
+		} else {
+
+			$categories = Categories::all();
+			return View::make('categories.index')
+				->with('categories', $categories);
+		}
+
+	}
+
+	public function search($id) {
+		$category = $id;
+
+		$terms = explode(' ', $category);
+
+		$query = DB::table('categories');
+
+		foreach ($terms as $term) {
+			$query->where('name', 'LIKE', '%'.$term.'%')
+			      ->orwhere('description', 'LIKE', '%'.$term.'%');
+		}
+		$results = $query->get();
+
+		return View::make('categories.index')->with('categories', $results);
+	}
+	
 	/**
 	 * Show the form for creating a new category.
 	 *

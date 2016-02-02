@@ -13,7 +13,6 @@ class CreateAddressesTable extends Migration {
 		Schema::create('addresses', function ($newAddress) {
 				$newAddress->increments('id');
 				$newAddress->string('streetName');
-				$newAddress->integer('buildingNumber');
 				$newAddress->string('postalCode');
 				$newAddress->string('province');
 				$newAddress->string('city');

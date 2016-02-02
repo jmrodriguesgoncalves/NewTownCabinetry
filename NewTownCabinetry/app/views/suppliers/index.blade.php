@@ -161,19 +161,15 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								<!-- dropdown-search -->
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-									<div class="dropdown-menu dropdown-menu-right dropdown-search">
-										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Search for...">
-											<span class="input-group-btn">
-												<button class="btn btn-theme" type="button">Search</button>
-											</span>
-										</div>
-									</div>
-								</li>
-								<!-- //dropdown-search -->
+								<!--search field-->
+								{{ Form::open(array('method' => 'GET', 'url' => 'suppliers', 'class'=>'form navbar-form navbar-right searchform')) }}
+								{{ Form::text('search', null,
+                           			array('class'=>'form-control',
+                                'placeholder'=>'Search for suppliers...')) }}
+                                {{ Form::submit('Search',
+                                array('class'=>'btn btn-default')) }}
+                                {{ Form::close() }}
+                                <!--search field end here-->
 							</ul>
 						</div><!--/.nav-collapse -->
 
@@ -213,8 +209,9 @@
 											<tbody>
 												@foreach($suppliers as $key => $value)
 												<tr>
-													<td><strong>{{ $value->supplierCode }}</strong></td>
+													<td><strong>{{ $value->id }}</strong></td>
 													<td>{{ $value->name}}</td>
+													<td><a class="btn btn-small btn-blue" href="{{ URL::to('suppliers/' . $value->id . '/details') }}">Details</a></td>
 													<td><a class="btn btn-small btn-green" href="{{ URL::to('suppliers/' . $value->id . '/edit') }}">Edit</a></td>
 													<td>
 													{{ Form::open(array('url' => 'suppliers/' . $value->id, 'class' => 'pull-right')) }}
