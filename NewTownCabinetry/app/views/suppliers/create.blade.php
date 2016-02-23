@@ -152,10 +152,10 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<a tabindex="-1" href="#">Products</a>
+											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
-												<li><a href="#">Add Product</a></li>
-												<li><a href="#">List Products</a></li>
+												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
+												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -189,7 +189,7 @@
 									<h3 class="panel-title">Create Supplier</h3>
 								</div>
 								<div class="panel-body">
-									{{Form::open(array('url' => 'suppliers', 'supplierCode' => 'add'))}}
+									{{Form::open(array('url' => 'suppliers', 'name' => 'add'))}}
 
 										<div class="form-group"><!-- Supplier Name field start-->
 											{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}

@@ -151,10 +151,10 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<a tabindex="-1" href="#">Products</a>
+											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
-												<li><a href="#">Add Product</a></li>
-												<li><a href="#">List Products</a></li>
+												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
+												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -207,48 +207,6 @@
 									</div>		
 
 								</div>
-
-								@if ($errors->has('name'))
-								<div class="alert alert-danger" role="alert">
-									NAME FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('phone'))
-								<div class="alert alert-danger" role="alert">
-									PHONE FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('email'))
-								<div class="alert alert-danger" role="alert">
-									EMAIL FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('address'))
-								<div class="alert alert-danger" role="alert">
-									ADDRESS FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('postalCode'))
-								<div class="alert alert-danger" role="alert">
-									POSTAL CODE FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('province'))
-								<div class="alert alert-danger" role="alert">
-									PROVINCE/STATE FIELD IS REQUIRED!
-								</div>
-								@endif
-
-								@if ($errors->has('country'))
-								<div class="alert alert-danger" role="alert">
-									COUNTRY FIELD IS REQUIRED!
-								</div>
-								@endif
 									
 							</div>
 

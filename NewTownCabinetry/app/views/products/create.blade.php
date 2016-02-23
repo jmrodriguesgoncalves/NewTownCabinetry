@@ -186,31 +186,104 @@
 						<div class="col-md-4 col-md-offset-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">Create Category </h3>
+									<h3 class="panel-title">Create Product</h3>
 								</div>
 								<div class="panel-body">
-									{{Form::open(array('url' => 'categories', 'name' => 'add'))}}
+									{{Form::open(array('url' => 'products', 'id' => 'add'))}}
+
+										<div class="form-group"><!-- Supplier Product Id field start-->
+											{{ Form::label('supplierProductId', 'Product Id', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('supplierProductId'))
+											<div class="has-error">
+											@endif
+											{{ Form::text('supplierProductId', '', array('class' => 'form-control')) }}
+										</div>
+										
 										<div class="form-group"><!-- Product Name field start-->
 											{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}
     										@if ($errors->has('name'))
 											<div class="has-error">
 											@endif
-											{{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name')) }}
+											{{ Form::text('name', '', array('class' => 'form-control')) }}
 										</div>
-										<div class="form-group"><!-- Description field start -->
-    										{{ Form::label('description', 'Details', array('class' => 'col-xs-3 control-label')) }}
-											{{ Form::textarea('description', '', array('class' => 'form-control', 'id' => 'description')) }}
-    									</div><!-- Description field end -->
+
+										<div class="form-group"><!-- Supplier name field start-->
+											{{ Form::label('supplier', 'Supplier', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('suppliers_id'))
+											<div class="has-error">
+											@endif
+											{{ Form::select('suppliers_id', ['' => 'Choose Supplier'] + $suppliers, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Category Name field start-->
+											{{ Form::label('category', "Category", array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('categories_id'))
+											<div class="has-error">
+											@endif
+											{{ Form::select('categories_id', ['' => 'Choose Category'] + $categories, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Cost field start-->
+											{{ Form::label('unitPrice', 'Cost', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('unitPrice'))
+											<div class="has-error">
+											@endif
+											{{ Form::input('decimal', 'unitPrice', '', array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Quantity field start-->
+											{{ Form::label('quantity', 'Quantity', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('quantity'))
+											<div class="has-error">
+											@endif
+											{{ Form::number('quantity', '', array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Color field start-->
+											{{ Form::label('color', 'Color', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('color'))
+											<div class="has-error">
+											@endif
+											{{ Form::text('color', '', array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Description field start-->
+											{{ Form::label('description', 'Details', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('description'))
+											<div class="has-error">
+											@endif
+											{{ Form::textarea('description', '', array('class' => 'form-control')) }}
+										</div>
+
 										<div class="padd-t-20">
-											{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this category?")')) }}
+											{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this product?")')) }}
 											{{ Form::reset('Reset Form', array('class' => 'btn btn-red btn-lg btn-block'))}}
 										</div>
 									{{ Form::close() }}
 
 								</div>
+
 								@if ($errors->has('name'))
 								<div class="alert alert-danger" role="alert">
 									NAME FIELD IS REQUIRED!
+								</div>
+								@endif
+
+								@if ($errors->has('unitPrice'))
+								<div class="alert alert-danger" role="alert">
+									COST FIELD IS REQUIRED!
+								</div>
+								@endif
+
+								@if ($errors->has('quantity'))
+								<div class="alert alert-danger" role="alert">
+									QUANTITY FIELD IS REQUIRED!
+								</div>
+								@endif
+
+								@if ($errors->has('color'))
+								<div class="alert alert-danger" role="alert">
+									COLOR FIELD IS REQUIRED!
 								</div>
 								@endif
 							</div>

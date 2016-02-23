@@ -151,10 +151,10 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<a tabindex="-1" href="#">Products</a>
+											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
-												<li><a href="#">Add Product</a></li>
-												<li><a href="#">List Products</a></li>
+												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
+												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -256,7 +256,7 @@
 											</div>
 
 											<div class="padd-t-20">
-												{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this supplier?")')) }}
+												{{ Form::submit('Edit', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this supplier?")')) }}
 												{{ Form::reset('Reset Form', array('class' => 'btn btn-red btn-lg btn-block'))}}
 											</div>
 										{{ Form::close() }}

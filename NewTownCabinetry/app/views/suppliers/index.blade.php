@@ -150,10 +150,10 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<a tabindex="-1" href="#">Products</a>
+											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
-												<li><a href="#">Add Product</a></li>
-												<li><a href="#">List Products</a></li>
+												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
+												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -209,11 +209,11 @@
 											<tbody>
 												@foreach($suppliers as $key => $value)
 												<tr>
-													<td><strong>{{ $value->id }}</strong></td>
-													<td>{{ $value->name}}</td>
-													<td><a class="btn btn-small btn-blue" href="{{ URL::to('suppliers/' . $value->id . '/details') }}">Details</a></td>
-													<td><a class="btn btn-small btn-green" href="{{ URL::to('suppliers/' . $value->id . '/edit') }}">Edit</a></td>
-													<td>
+													<td style="width:5%"><strong>{{ $value->id }}</strong></td>
+													<td style="width:80%">{{ $value->name}}</td>
+													<td style="width:5%"><a class="btn btn-small btn-blue" href="{{ URL::to('suppliers/' . $value->id . '/details') }}">Details</a></td>
+													<td style="width:5%"><a class="btn btn-small btn-green" href="{{ URL::to('suppliers/' . $value->id . '/edit') }}">Edit</a></td>
+													<td style="width:5%">
 													{{ Form::open(array('url' => 'suppliers/' . $value->id, 'class' => 'pull-right')) }}
                     									{{ Form::hidden('_method', 'DELETE') }}
                     									{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure you want to delete this supplier?")')) }}

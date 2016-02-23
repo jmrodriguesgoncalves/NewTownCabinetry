@@ -1,6 +1,5 @@
 <!doctype html>
 
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -131,7 +130,7 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home</a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home </a>
 								</li>
 								<!--menu li end here-->
 								<li class="dropdown">
@@ -163,7 +162,7 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								
+							
 							</ul>
 						</div><!--/.nav-collapse -->
 
@@ -186,97 +185,97 @@
 						<div class="col-md-4 col-md-offset-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">Create Category </h3>
+									<h3 class="panel-title">Product Details</h3>
 								</div>
 								<div class="panel-body">
-									{{Form::open(array('url' => 'categories', 'name' => 'add'))}}
-										<div class="form-group"><!-- Product Name field start-->
-											{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}
-    										@if ($errors->has('name'))
-											<div class="has-error">
-											@endif
-											{{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name')) }}
-										</div>
-										<div class="form-group"><!-- Description field start -->
-    										{{ Form::label('description', 'Details', array('class' => 'col-xs-3 control-label')) }}
-											{{ Form::textarea('description', '', array('class' => 'form-control', 'id' => 'description')) }}
-    									</div><!-- Description field end -->
-										<div class="padd-t-20">
-											{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this category?")')) }}
-											{{ Form::reset('Reset Form', array('class' => 'btn btn-red btn-lg btn-block'))}}
-										</div>
-									{{ Form::close() }}
+									<?php 
+										$supplier = Suppliers::find($product->supplierId);
+										$category = Categories::find($product->categoryId);
+									 ?>
+									<p>Product ID: {{$product->supplierProductId}}</p>
+									<p>Name: {{$product->name}}</p>
+									<p>Supplier: {{$supplier->name}}</p>
+									<p>Category: {{$category->name}}</p>
+									<p>Cost: {{$product->unitPrice}}</p>
+									<p>Quantity:  {{$product->quantity}}<br></p>
+									<p>Color is: {{$product->color}}</p>
+									<p>Description is: {{$product->details}}</p>
+
+									<div class="padd-t-20">
+											<a class="btn btn-small btn-green" href="{{ URL::to('suppliers/' . $product->id . '/edit') }}">Edit</a>
+											{{ Form::open(array('url' => 'products/' . $product->id, 'class' => 'pull-right')) }}
+            								{{ Form::hidden('_method', 'DELETE') }}
+            								{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure you want to delete this product?")')) }}
+        									{{ Form::close() }}
+									</div>		
 
 								</div>
-								@if ($errors->has('name'))
-								<div class="alert alert-danger" role="alert">
-									NAME FIELD IS REQUIRED!
-								</div>
-								@endif
+									
 							</div>
+
 						</div>
-					</div><!-- ./row -->
+					</div>
+				</div><!-- ./row -->
 
-				</div><!-- ./container -->
-			</section>
-		</div>
-		<!-- //wrapper -->
+			</div><!-- ./container -->
+		</section>
+	</div>
+	<!-- //wrapper -->
 
-		<!-- jquery -->
-		<script src="{{ URL::asset('js/jquery-1.11.3.min.js') }}"></script>
-		<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+	<!-- jquery -->
+	<script src="{{ URL::asset('js/jquery-1.11.3.min.js') }}"></script>
+	<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 
-		<!-- morris -->
-		<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js') }}"></script>
-		<script type="{{ URL::asset('text/javascript" src="plugins/morris/morris.min.js') }}"></script>
+	<!-- morris -->
+	<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js') }}"></script>
+	<script type="{{ URL::asset('text/javascript" src="plugins/morris/morris.min.js') }}"></script>
 
-		<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+	<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.tools.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
 
-		<!-- validator  -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/validator/validator.min.js') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/validator/form-scripts.js') }}"></script>
+	<!-- validator  -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/validator/validator.min.js') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/validator/form-scripts.js') }}"></script>
 
-		<!-- magnific-popup -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+	<!-- magnific-popup -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
-		<!-- owl-carousel -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
+	<!-- owl-carousel -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/owl-carousel/owl.carousel.min.js') }}"></script>
 
-		<!-- wow -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/wow/wow.js') }}"></script>
+	<!-- wow -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/wow/wow.js') }}"></script>
 
-		<!-- appear -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/appear/jquery.appear.js') }}"></script>
+	<!-- appear -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/appear/jquery.appear.js') }}"></script>
 
-		<!-- waypoints -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+	<!-- waypoints -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
 
-		<!-- counter-up -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/counterup/jquery.counterup.min.js') }}"></script>
+	<!-- counter-up -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/counterup/jquery.counterup.min.js') }}"></script>
 
-		<!-- countdown -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/countdown/jquery.countdown.min.js') }}"></script>
+	<!-- countdown -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/countdown/jquery.countdown.min.js') }}"></script>
 
-		<!-- gmaps  -->
-		<script type="text/javascript" src="{{ URL::asset('https://maps.googleapis.com/maps/api/js?v=3.exp') }}"></script>
-		<script type="text/javascript" src="{{ URL::asset('plugins/gmaps/gmaps.js') }}"></script>
+	<!-- gmaps  -->
+	<script type="text/javascript" src="{{ URL::asset('https://maps.googleapis.com/maps/api/js?v=3.exp') }}"></script>
+	<script type="text/javascript" src="{{ URL::asset('plugins/gmaps/gmaps.js') }}"></script>
 
-		<!-- smooth-scroll -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/smooth-scroll/smooth-scroll.js') }}"></script>
+	<!-- smooth-scroll -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/smooth-scroll/smooth-scroll.js') }}"></script>
 
-		<!-- flexslider -->
-		<script type="text/javascript" src="{{ URL::asset('plugins/flexslider/jquery.flexslider-min.js') }}"></script>
-
-
-		<!-- switcher -->
-		<script type="text/javascript" src="{{ URL::asset('switcher/switcher.js') }}"></script>
-
-		<!-- main -->
-		<script src="{{ URL::asset('js/main.js') }}"></script>
+	<!-- flexslider -->
+	<script type="text/javascript" src="{{ URL::asset('plugins/flexslider/jquery.flexslider-min.js') }}"></script>
 
 
-	</body>
+	<!-- switcher -->
+	<script type="text/javascript" src="{{ URL::asset('switcher/switcher.js') }}"></script>
+
+	<!-- main -->
+	<script src="{{ URL::asset('js/main.js') }}"></script>
+
+
+</body>
 </html>
-

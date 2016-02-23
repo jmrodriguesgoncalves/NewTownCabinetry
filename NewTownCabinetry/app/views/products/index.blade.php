@@ -150,13 +150,11 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<li class="dropdown-submenu">
 											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
 												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
 												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
 											</ul>
-										</li>
 										</li>
 									</ul>
 									<li class="dropdown">
@@ -164,10 +162,10 @@
 									</li>
 								</li> <!--menu li end here-->
 								<!--search field-->
-								{{ Form::open(array('method' => 'GET', 'url' => 'categories', 'class'=>'form navbar-form navbar-right searchform')) }}
+								{{ Form::open(array('method' => 'GET', 'url' => 'products', 'class'=>'form navbar-form navbar-right searchform')) }}
 								{{ Form::text('search', null,
                            			array('class'=>'form-control',
-                                'placeholder'=>'Search for categories...')) }}
+                                'placeholder'=>'Search for products...')) }}
                                 {{ Form::submit('Search',
                                 array('class'=>'btn btn-default')) }}
                                 {{ Form::close() }}
@@ -186,7 +184,7 @@
 			<section class="padd-tb-60">
 				<div class="container">
 				@if(Session::has('error'))
-				<p><strong><font color="red">You cannot delete this category because some products depend on it</font></strong></p>
+				<p><strong><font color="red">You cannot delete this product</font></strong></p>
 				@endif
 					<div class="row">
 
@@ -196,7 +194,7 @@
 							<div class="padd-tb-10">
 								<div class="panel panel-dark-blue">
 									<div class="panel-heading">
-										<h3 class="panel-title"><i class="fa fa-th-list"></i> Categories</h3>
+										<h3 class="panel-title"><i class="fa fa-th-list"></i> Products</h3>
 									</div>
 									<div class="panel-body">
 
@@ -204,20 +202,33 @@
 											<thead>
 												<tr>
 													<th><h4>Name</h4></th>
-													<th><h4>Description</h4></th>
+													<th><h4>Cost</h4></th>
+													<th><h4>Supplier</h4></th>
+													<th><h4>Category</h4></th>
+													<th><h4>Quantity</h4></th>
+													<th><h4>Colour</h4></th>
 													<th><h4>Status</h4></th>
 												</tr>
 											</thead>
-											<tbody>
-												@foreach($categories as $key => $value)
+											<tbody>							
+												@foreach($products as $key => $value)
 												<tr>
-													<td style="width:10%"><strong>{{ $value->name }}</strong></td>
-													<td style="width:80%">{{ $value->description}}</td>
-													<td style="width:5%"><a class="btn btn-small btn-green" href="{{ URL::to('categories/' . $value->id . '/edit') }}">Edit</a></td>
+													<?php 
+														$supplier = Suppliers::find($value->supplierId);
+														$category = Categories::find($value->categoryId);
+									 				?>
+													<td style="width:15%"><strong>{{ $value->name }}</strong></td>
+													<td style="width:15%">{{ $value->unitPrice}}</td>
+													<td style="width:15%">{{ $supplier->name}}</td>
+													<td style="width:15%">{{ $category->name}}</td>
+													<td style="width:15%">{{ $value->quantity}}</td>
+													<td style="width:10%">{{ $value->color}}</td>
+													<td style="width:5%"><a class="btn btn-small btn-blue" href="{{ URL::to('products/' . $value->id . '/details') }}">Details</a></td>
+													<td style="width:5%"><a class="btn btn-small btn-green" href="{{ URL::to('products/' . $value->id . '/edit') }}">Edit</a></td>
 													<td style="width:5%">
-													{{ Form::open(array('url' => 'categories/' . $value->id, 'class' => 'pull-right')) }}
+													{{ Form::open(array('url' => 'products/' . $value->id, 'class' => 'pull-right')) }}
                     									{{ Form::hidden('_method', 'DELETE') }}
-                    									{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure you want to delete this category?")')) }}
+                    									{{ Form::submit('Delete', array('class' => 'btn btn-danger', 'onclick' => 'return confirm("Are you sure you want to delete this product?")')) }}
                 										{{ Form::close() }}
 												</td>
 												</tr>

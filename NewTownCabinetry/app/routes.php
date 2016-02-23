@@ -14,9 +14,15 @@
 Route::get('add_product', 'ProductController@showData');
 Route::post('view_product_details', 'ProductController@viewProductDetails');
 
-//Route for handling Categories
+//Routes
 Route::resource('categories', 'CategoryController');
 
 Route::resource('suppliers', 'SupplierController');
 
+Route::resource('products', 'ProductController');
+
+//Route::post('products.create', 'ProductController@create');
+
 Route::resource('suppliers.details', 'SupplierController@details');
+
+Route::resource('products.details', 'ProductController@details');

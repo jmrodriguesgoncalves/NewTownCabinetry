@@ -1,94 +1,244 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>New Town Cabinetry - Dashboard</title>
+<html lang="en">
+	<head>
+		<script></script>
+		<meta charset="utf-8">
+		<title>New Town Cabinetry </title>
+		<!-- Mobile Meta -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Clarity is a Bootstrap-based, Responsive HTML5 Template">
+		<meta name="author" content="bootstrapwizard.info">
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/datepicker3.css" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet">
+		<!-- Font Awesome CSS -->
+		<link href="css/font-awesome/font-awesome.min.css" rel="stylesheet">
 
-<!--Icons-->
-<script src="js/lumino.glyphs.js"></script>
+		<!-- Simple Line Icons -->
+		<link href="css/simple-line-icons/simple-line-icons.css" rel="stylesheet">
 
-<!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.min.js"></script>
-<![endif]-->
+		<!-- Bootstrap main CSS -->
+		<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
-</head>
+		<!-- Web Fonts  -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-<body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#"><span>New Town</span> Cabinetry</a>
-				<ul class="user-menu">
-					<li class="dropdown pull-right">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
-							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
-						</ul>
-					</li>
-				</ul>
+		<!-- yamm3 -->
+		<link href="css/yamm.css" rel="stylesheet">
+
+		<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+		<link rel="stylesheet" type="text/css" href="plugins/rs-plugin/css/settings.css" media="screen" />
+
+		<!-- Animate -->
+		<link href="css/animate/animate.min.css" rel="stylesheet">
+
+		<!-- owl-carousel -->
+		<link href="plugins/owl-carousel/owl.carousel.css" rel="stylesheet">
+		<link href="plugins/owl-carousel/owl.theme.css" rel="stylesheet">
+
+		<!-- magnific-popup -->
+		<link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+		<!-- flexslider -->
+		<link href="plugins/flexslider/flexslider.css" rel="stylesheet">
+
+		<!-- morris -->
+		<link href="plugins/morris/morris.css" rel="stylesheet">
+
+		<!-- Hover -->
+		<link href="css/hover/hover.min.css" rel="stylesheet">
+
+		<!-- prettify  -->
+		<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+		<link href="css/prettify/prettify.css" rel="stylesheet">
+
+		<!-- style -->
+		<link href="css/style.css" rel="stylesheet">
+
+		<!-- switcher -->
+		<link href="switcher/switcher.css" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="css/colors/blue.css" id="colors">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body class="wide">
+
+		<!-- wrapper -->
+		<div class="wrapper">
+
+			<!-- Preloader -->
+			<div id="preloader">
+				<div id="status">&nbsp;</div>
 			</div>
+			<!-- //Preloader -->
 
-		</div><!-- /.container-fluid -->
-	</nav>
+			<!-- scrollToTop -->
+			<a href="#" class="scrollToTop">
+				<i class="fa fa-angle-up fa-2x"></i>
+			</a>
+			<!-- ./scrollToTop -->
 
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
-		<ul class="nav menu">
-			<li class="active"><a href="index.html"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg> Home</a></li>
-			<li><a href="add_product"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Suppliers &amp; Products</a></li>
-			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Purchase Order</a></li>
-			<li><a href="tables.html"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Invoice</a></li>
-			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Report</a></li>
+			<!-- header -->
+			<header id="header">
 
-			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Contact</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> About</a></li>
-			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Help</a></li>
-		</ul>
+				<!-- top-header -->
+				<div class="top-header bg-white hidden-xs">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<ul class="list-inline pull-left">
+									<li><i class="fa fa-map-marker"></i> &nbsp; Newmarket, Ontario Canada</li>
+									<li><i class="fa fa-phone"></i>&nbsp; Phone#:</li>
+									<li><i class="fa fa-envelope-o"></i>&nbsp; Support@gmail.com</li>
+								</ul>
+							</div>
+							<div class="col-md-6">
+								<ul class="list-inline pull-right">
+									<li><a href="#" class="icon-holder small circle"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#" class="icon-holder small circle"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#" class="icon-holder small circle"><i class="fa fa-linkedin"></i></a></li>
+									<li><a href="#" class="icon-holder small circle"><i class="fa fa-google-plus"></i></a></li>
+									<li><a href="#" class="icon-holder small circle"><i class="fa fa-youtube-play"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //top-header -->
 
-	</div><!--/.sidebar-->
+				<!-- navbar -->
+				<div class="navbar navbar-v1 stay-top padd-tb-30 yamm" role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="home-business.html">NEW TOWN CABINETRY</a>
+							<!--<a class="navbar-brand" href="#"><span>c</span>clarity</a>-->
+						</div>
+						<div class="navbar-collapse collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home </a>
+								</li>
+								<!--menu li end here-->
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Manage <i class="fa fa-angle-down"></i></a>
+									<ul class="dropdown-menu" role="menu">
+										<li class="dropdown-submenu">
+											<a tabindex="-1" href="{{ URL::action('categories.index') }}">Categories </a>
+											<ul class="dropdown-menu">
+												<li><a href="{{ URL::action('categories.create') }}"> Add Category</a></li>
+												<li><a href="{{ URL::action('categories.index') }}"> List Categories</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a tabindex="-1" href="{{ URL::action('suppliers.index') }}">Suppliers</a>
+											<ul class="dropdown-menu">
+												<li><a href="{{ URL::action('suppliers.create') }}">Add Supplier</a></li>
+												<li><a href="{{ URL::action('suppliers.index') }}">List Suppliers</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
+											<ul class="dropdown-menu">
+												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
+												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
+											</ul>
+										</li>
+									</ul>
+									<li class="dropdown">
+											<a tabindex="-1" href="#">Contact Us</a>
+									</li>
+								</li> <!--menu li end here-->
+								<!--search field-->
+								
+                                <!--search field end here-->
+							</ul>
+						</div><!--/.nav-collapse -->
 
-	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-		<div class="row">
-			<ol class="breadcrumb">
-				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Icons</li>
-			</ol>
-		</div><!--/.row-->
+					</div><!-- ./container -->
+				</div>
+				<!-- //navbar -->
 
-		<div class="row">
-			<div class="col-lg-12">
-				<h1 class="page-header">Home</h1>
-			</div>
-		</div><!--/.row-->
 
+			</header>
+			<!-- /header -->
+
+			<section class="padd-tb-60">
+				<div class="container">
+				
 	</div>	<!--/.main-->
+		<script>
 
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/chart.min.js"></script>
-	<script src="js/chart-data.js"></script>
-	<script src="js/easypiechart.js"></script>
-	<script src="js/easypiechart-data.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-</body>
 
+
+		</script>
+		<!-- jquery -->
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+
+		<!-- morris -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+		<script type="text/javascript" src="plugins/morris/morris.min.js"></script>
+
+		<!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+		<script type="text/javascript" src="plugins/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script type="text/javascript" src="plugins/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+		<!-- validator  -->
+		<script type="text/javascript" src="plugins/validator/validator.min.js"></script>
+		<script type="text/javascript" src="plugins/validator/form-scripts.js"></script>
+
+		<!-- magnific-popup -->
+		<script type="text/javascript" src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+		<!-- owl-carousel -->
+		<script type="text/javascript" src="plugins/owl-carousel/owl.carousel.min.js"></script>
+
+		<!-- wow -->
+		<script type="text/javascript" src="plugins/wow/wow.js"></script>
+
+		<!-- appear -->
+		<script type="text/javascript" src="plugins/appear/jquery.appear.js"></script>
+
+		<!-- waypoints -->
+		<script type="text/javascript" src="plugins/waypoints/jquery.waypoints.min.js"></script>
+
+		<!-- counter-up -->
+		<script type="text/javascript" src="plugins/counterup/jquery.counterup.min.js"></script>
+
+		<!-- countdown -->
+		<script type="text/javascript" src="plugins/countdown/jquery.countdown.min.js"></script>
+
+		<!-- gmaps  -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+		<script type="text/javascript" src="plugins/gmaps/gmaps.js"></script>
+
+		<!-- smooth-scroll -->
+		<script type="text/javascript" src="plugins/smooth-scroll/smooth-scroll.js"></script>
+
+		<!-- flexslider -->
+		<script type="text/javascript" src="plugins/flexslider/jquery.flexslider-min.js"></script>
+
+
+		<!-- switcher -->
+		<script type="text/javascript" src="switcher/switcher.js"></script>
+
+		<!-- main -->
+		<script src="js/main.js"></script>
+
+
+	</body>
 </html>
+

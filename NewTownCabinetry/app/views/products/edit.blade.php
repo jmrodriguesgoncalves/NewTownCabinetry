@@ -1,6 +1,5 @@
 <!doctype html>
 
-
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -131,7 +130,7 @@
 						<div class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home</a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Home </a>
 								</li>
 								<!--menu li end here-->
 								<li class="dropdown">
@@ -145,17 +144,17 @@
 											</ul>
 										</li>
 										<li class="dropdown-submenu">
-											<a tabindex="-1" href="{{ URL::action('suppliers.index') }}">Suppliers</a>
-											<ul class="dropdown-menu">
-												<li><a href="{{ URL::action('suppliers.create') }}">Add Supplier</a></li>
-												<li><a href="{{ URL::action('suppliers.index') }}">List Suppliers</a></li>
-											</ul>
-										</li>
-										<li class="dropdown-submenu">
 											<a tabindex="-1" href="{{ URL::action('products.index') }}">Products</a>
 											<ul class="dropdown-menu">
 												<li><a href="{{ URL::action('products.create') }}">Add Product</a></li>
 												<li><a href="{{ URL::action('products.index') }}">List Products</a></li>
+											</ul>
+										</li>
+										<li class="dropdown-submenu">
+											<a tabindex="-1" href="#">Products</a>
+											<ul class="dropdown-menu">
+												<li><a href="#">Add Product</a></li>
+												<li><a href="#">List Products</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -163,7 +162,7 @@
 											<a tabindex="-1" href="#">Contact Us</a>
 									</li>
 								</li> <!--menu li end here-->
-								
+							
 							</ul>
 						</div><!--/.nav-collapse -->
 
@@ -186,33 +185,134 @@
 						<div class="col-md-4 col-md-offset-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h3 class="panel-title">Create Category </h3>
+									<h3 class="panel-title">Edit Product </h3>
 								</div>
 								<div class="panel-body">
-									{{Form::open(array('url' => 'categories', 'name' => 'add'))}}
+									{{Form::model($product, array('route' => array('products.update', $product->id), 
+ 																   'method' => 'PUT'))}}
+
+											<div class="form-group"><!-- Supplier Product Id field start-->
+											{{ Form::label('supplierProductId', 'Product Id', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('supplierProductId'))
+											<div class="has-error">
+											@endif
+											{{ Form::text('supplierProductId', null, array('class' => 'form-control')) }}
+										</div>
+										
 										<div class="form-group"><!-- Product Name field start-->
 											{{ Form::label('name', 'Name', array('class' => 'col-xs-3 control-label')) }}
     										@if ($errors->has('name'))
 											<div class="has-error">
 											@endif
-											{{ Form::text('name', '', array('class' => 'form-control', 'id' => 'name')) }}
+											{{ Form::text('name', null, array('class' => 'form-control')) }}
 										</div>
-										<div class="form-group"><!-- Description field start -->
-    										{{ Form::label('description', 'Details', array('class' => 'col-xs-3 control-label')) }}
-											{{ Form::textarea('description', '', array('class' => 'form-control', 'id' => 'description')) }}
-    									</div><!-- Description field end -->
+
+										<div class="form-group"><!-- Supplier name field start-->
+											{{ Form::label('supplier', 'Supplier', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('suppliers_id'))
+											<div class="has-error">
+											@endif
+											{{ Form::select('suppliers_id', [null => 'Choose Supplier'] + $suppliers, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Category Name field start-->
+											{{ Form::label('category', "Category", array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('categories_id'))
+											<div class="has-error">
+											@endif
+											{{ Form::select('categories_id', [null => 'Choose Category'] + $categories, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Cost field start-->
+											{{ Form::label('unitPrice', 'Cost', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('unitPrice'))
+											<div class="has-error">
+											@endif
+											{{ Form::input('decimal', 'unitPrice', null, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Quantity field start-->
+											{{ Form::label('quantity', 'Quantity', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('quantity'))
+											<div class="has-error">
+											@endif
+											{{ Form::number('quantity', null, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Color field start-->
+											{{ Form::label('color', 'Color', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('color'))
+											<div class="has-error">
+											@endif
+											{{ Form::text('color', null, array('class' => 'form-control')) }}
+										</div>
+
+										<div class="form-group"><!-- Description field start-->
+											{{ Form::label('description', 'Details', array('class' => 'col-xs-3 control-label')) }}
+    										@if ($errors->has('description'))
+											<div class="has-error">
+											@endif
+											{{ Form::textarea('description', null, array('class' => 'form-control')) }}
+										</div>
+
 										<div class="padd-t-20">
-											{{ Form::submit('Add', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this category?")')) }}
+											{{ Form::submit('Edit', array('class' => 'btn btn-theme btn-lg btn-block', 'onclick' => 'return confirm("Are you sure you want to add this supplier?")')) }}
 											{{ Form::reset('Reset Form', array('class' => 'btn btn-red btn-lg btn-block'))}}
 										</div>
-									{{ Form::close() }}
+										{{ Form::close() }}
 
+									</div>
+
+									@if ($errors->has('name'))
+									<div class="alert alert-danger" role="alert">
+										NAME FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('phone'))
+									<div class="alert alert-danger" role="alert">
+										PHONE FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('email'))
+									<div class="alert alert-danger" role="alert">
+										EMAIL FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('address'))
+									<div class="alert alert-danger" role="alert">
+										ADDRESS FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('city'))
+									<div class="alert alert-danger" role="alert">
+										CITY FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('postalCode'))
+									<div class="alert alert-danger" role="alert">
+										POSTAL CODE FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('province'))
+									<div class="alert alert-danger" role="alert">
+										PROVINCE/STATE FIELD IS REQUIRED!
+									</div>
+									@endif
+
+									@if ($errors->has('country'))
+									<div class="alert alert-danger" role="alert">
+										COUNTRY FIELD IS REQUIRED!
+									</div>
+									@endif
+									
 								</div>
-								@if ($errors->has('name'))
-								<div class="alert alert-danger" role="alert">
-									NAME FIELD IS REQUIRED!
-								</div>
-								@endif
+
 							</div>
 						</div>
 					</div><!-- ./row -->
@@ -279,4 +379,3 @@
 
 	</body>
 </html>
-
